@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Ruba ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0; min-height:100vh; overflow-x:hidden;
+ font-family:'Cairo',sans-serif;
+ color:white; text-align:center;
+ background:linear-gradient(135deg,#160b32,#49205f,#a33d83,#281347);
+ background-size:300% 300%;
+ animation:bg 12s infinite alternate;
+}
+@keyframes bg{to{background-position:100% 100%}}
+.screen{display:none;min-height:100vh;padding:45px 20px;align-items:center;justify-content:center;flex-direction:column}
+.screen.active{display:flex}
+h1{font-size:35px;margin:10px}
+p{line-height:2;font-size:17px}
+.glow{ text-shadow:0 0 15px #ff8acb,0 0 35px #ff43a5}
+button{
+ border:1px solid #ffffff70;
+ border-radius:35px;padding:14px 30px;
+ font-family:inherit;font-size:17px;font-weight:bold;
+ color:white;background:linear-gradient(90deg,#e44eaa,#9b53d9);
+ box-shadow:0 0 25px #e44eaa80;
+ cursor:pointer;margin:12px;
+}
+button:active{transform:scale(.95)}
+.card{
+ max-width:420px;width:100%;padding:28px 22px;
+ border:1px solid #ffffff50;border-radius:25px;
+ background:#ffffff15;backdrop-filter:blur(12px);
+ box-shadow:0 0 35px #e85bab30;
+}
+.heart{font-size:65px;animation:beat 1s infinite}
+@keyframes beat{50%{transform:scale(1.25)}}
+.star{
+ position:fixed;color:#fff;pointer-events:none;
+ animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.2;transform:scale(.5)}}
+.float{
+ position:fixed;bottom:-40px;pointer-events:none;
+ animation:rise 8s linear forwards;z-index:0;
+}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.content{position:relative;z-index:2}
+.secret{display:none;margin-top:20px;animation:appear 1s}
+.secret.show{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.reason{
+ padding:13px;margin:10px 0;border-radius:15px;
+ background:#ffffff18;border:1px solid #ffffff35;
+}
+.gift{font-size:100px;cursor:pointer;animation:beat 1.5s infinite}
+.small{font-size:13px;opacity:.75}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+ <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="content">
+
+<section class="screen active" id="s1">
+ <div class="heart">💗</div>
+ <h1 class="glow">Hey Ruba...</h1>
+ <p>في شي صغير عاملِك ياه...</p>
+ <p>بس بدي ياكي تفتحيه للآخر ❤️</p>
+ <button onclick="start()">Open Your Surprise ✨</button>
+ <p class="small">A little universe made just for you</p>
+</section>
+
+<section class="screen" id="s2">
+ <div class="card">
+  <h1 class="glow">Welcome to your universe 🌙</h1>
+  <p>بعالم مليان نجوم، في نجمة وحدة بتضوي أكتر من الكل...</p>
+  <div class="heart">⭐</div>
+  <h2>And that's YOU, Ruba.</h2>
+  <button onclick="go(3)">Continue ❤️</button>
+ </div>
+</section>
+
+<section class="screen" id="s3">
+ <div class="card">
+  <h1 class="glow">A little secret 💌</h1>
+  <p>في أشياء كتيرة بحبها فيكي...</p>
+  <p>ويمكن ما بقدر عبّر عنها كل يوم.</p>
+  <p>بس اليوم قررت خبّيلك شوي منها هون.</p>
+  <button onclick="go(4)">Discover them ✨</button>
+ </div>
+</section>
+
+<section class="screen" id="s4">
+ <div class="card">
+  <h1 class="glow">Reasons I Love You ❤️</h1>
+  <p>اضغطي على كل نجمة لتكتشفي سبب...</p>
+  <div id="reasons">
+   <div class="reason" onclick="reveal(this,'لأن ضحكتك لحالها بتغيّر نهاري ❤️')">⭐ Secret 1</div>
+   <div class="reason" onclick="reveal(this,'لأن وجودك بيخلّي كل شي أحلى 💗')">⭐ Secret 2</div>
+   <div class="reason" onclick="reveal(this,'لأنك إنتِ، وما في حدا بيشبهك 🥹')">⭐ Secret 3</div>
+   <div class="reason" onclick="reveal(this,'لأن صوتك من الأشياء اللي ما بملّ منها 🎵')">⭐ Secret 4</div>
+   <div class="reason" onclick="reveal(this,'لأنك بتخلّيني ابتسم حتى بأصعب الأيام ❤️')">⭐ Secret 5</div>
+   <div class="reason" onclick="reveal(this,'لأن قلبي اختارك من بين كل الناس 💍')">⭐ Secret 6</div>
+  </div>
+  <button onclick="go(5)">One more surprise 🎁</button>
+ </div>
+</section>
+
+<section class="screen" id="s5">
+ <div class="card">
+  <h1 class="glow">A gift for you 🎁</h1>
+  <p>في هدية صغيرة ناطرتك...</p>
+  <div class="gift" onclick="openGift()">🎁</div>
+  <p>اضغطي على الهدية لتفتحيها</p>
+  <div id="giftText" class="secret">
+   <div class="heart">💝</div>
+   <h2>Surprise, My Love!</h2>
+   <p>أحلى هدية بحياتي مش شي بقدر حطّه بعلبة...</p>
+   <p>هي إنك موجودة بحياتي يا رُبى ❤️</p>
+   <button onclick="go(6)">Read my heart 💌</button>
+  </div>
+ </div>
+</section>
+
+<section class="screen" id="s6">
+ <div class="card">
+  <div class="heart">❤️</div>
+  <h1 class="glow">To My Ruba</h1>
+  <p>
+   رُبى حبيبتي...<br><br>
+   يمكن هيدا يلي عم تشوفي مجرد كلمات وقلوب ونجوم،
+   بس كل تفصيل فيه معمول كرمالك.<br><br>
+   بدي تعرفي إنك مش بس شخص بحياتي،
+   إنتِ جزء من أحلى أحلامي.<br><br>
+   بحب ضحكتك، بحب تفاصيلك،
+   وبحب حتى الأشياء الصغيرة اللي يمكن إنتِ ما بتنتبهي إلها.<br><br>
+   وإذا كان فيني اختار من جديد،
+   رح اختارك إنتِ كل مرة.<br><br>
+   إنتِ عالمي الحلو يا رُبى. ❤️
+  </p>
+  <h2 class="glow">Forever Yours, Mhmd ❤️</h2>
+  <button onclick="go(7)">One last thing... 🥹</button>
+ </div>
+</section>
+
+<section class="screen" id="s7">
+ <div class="card">
+  <div class="heart">💗</div>
+  <h1 class="glow">You are my favorite person.</h1>
+  <p>And no matter how many stars exist...</p>
+  <p>My favorite one will always be you.</p>
+  <h2>Mhmd ❤️ Ruba</h2>
+  <p class="small">Made with all my love, just for you.</p>
+  <button onclick="go(2)">Experience it again ↻</button>
+ </div>
+</section>
+
+</div>
+
+<script>
+const music=document.getElementById('music');
+
+function go(n){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
+ window.scrollTo(0,0);
+}
+
+function start(){
+ music.play().catch(()=>{});
+ go(2);
+}
+
+function reveal(el,message){
+ el.innerHTML=message;
+ el.style.background='#ff8acb35';
+}
+
+function openGift(){
+ document.getElementById('giftText').classList.add('show');
+}
+
+function floating(){
+ const el=document.createElement('div');
+ el.className='float';
+ el.innerHTML=['❤️','💗','💕','✨','💖'][Math.floor(Math.random()*5)];
+ el.style.left=Math.random()*100+'vw';
+ el.style.fontSize=(15+Math.random()*25)+'px';
+ el.style.animationDuration=(5+Math.random()*5)+'s';
+ document.body.appendChild(el);
+ setTimeout(()=>el.remove(),10000);
+}
+setInterval(floating,450);
+
+for(let i=0;i<35;i++){
+ const s=document.createElement('div');
+ s.className='star';
+ s.innerHTML='✦';
+ s.style.left=Math.random()*100+'vw';
+ s.style.top=Math.random()*100+'vh';
+ s.style.fontSize=(8+Math.random()*15)+'px';
+ s.style.animationDelay=Math.random()*3+'s';
+ document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
